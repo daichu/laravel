@@ -1,0 +1,15 @@
+*{
+    margin: auto;
+    box-sizing: border-box;
+}
+.wapper{
+    width: 100%;
+    background-color: lightgoldenrodyellow;
+}
+.container{
+    width: 30%;
+    padding: 20px;
+}
+h1{
+    text-align: center;
+}
