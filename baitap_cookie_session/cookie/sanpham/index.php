@@ -13,22 +13,31 @@
 <div class="wapper">
     <div class="container-flud">
         <h1>Sản phẩm</h1>
-        <a href="sanpham01.php">san pham 01</a>
-        <a href="sanpham02.php">san pham 02</a>
+
+        <?php
+        //echo "đay là trang index ssanr pham";
+        require_once '../../function.php';
+        $sql = "SELECT * FROM sanpham";
+        $result = $conn->query($sql);
+        while($post = $result->fetch_assoc()) { ?>
+        <a href="product.php?id=<?php echo $post['id']; ?>">sản phẩm <?php  echo $post['id']; ?></a>
+         <?php
+        }
+           ?>
         <h1>Các sản phẩm bạn đã xem:</h1>
         <?php
-        $post = unserialize($_COOKIE['sanpham']);
-        $post = (array)$post;
-        echo "<pre>";
-        print_r($post);
-        echo "</pre>";
         echo "<pre>";
         print_r($_COOKIE);
         echo "</pre>";
+        $sanpham_visited = unserialize($_COOKIE['sanpham']);
+        $sanpham_visited = (array)$sanpham_visited;
+        echo "<pre>";
+        print_r($sanpham_visited);
+        echo "</pre>";
+
         ?>
     </div>
 </div>
-
 </body>
 </html>
 

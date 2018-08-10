@@ -26,6 +26,10 @@ require_once '../../function.php';
                 if($_SESSION['timeout'] + 20 > time()){
                     echo "<h3 style='text-align: center;'>hôm nay là :" .date('Y/m/d'). "</h3>";
                     echo "<h3 style='text-align: center;'><a href='logout.php'> đăng xuất</a></h3>";
+                    echo "<a href='http://localhost/baitap_video/baitap/session/sanpham/index.php'>sản phẩm</a>";
+                    echo "<pre>";
+                    print_r($_SESSION);
+                    echo "</pre>";
                 }
                 else
                 {
@@ -40,12 +44,14 @@ require_once '../../function.php';
                     $k = 0;
                     while ($info_user = $result->fetch_assoc()) {
                         if ($info_user['username'] == $user_name && $info_user['password'] == $user_pass) {
+                            $_SESSION['id'] = $info_user['id'];
                             $_SESSION['user'] = $user_name;
                             $_SESSION['pass'] = $user_pass;
                             $_SESSION['fullname'] = $info_user['fullname'];
                             //$_SESSION['flag'] == false;
                             $_SESSION['timeout'] = time();
                             $k = $k + 1;
+
                             //echo "đã tới session";
                             // session_unset();
                         } else {
@@ -73,7 +79,7 @@ require_once '../../function.php';
         <h1 style="text-align: center">Tên đầy đủ: <?php echo $_SESSION['fullname']; ?></h1>
     </div>
 </div>
-
+<a href="http://localhost/baitap_video/baitap/session/dangnhap/process.php<?php  ?>";
 </body>
 </html>
 
